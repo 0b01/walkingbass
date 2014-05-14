@@ -148,8 +148,6 @@ class walking_bass():
 
 
 if __name__ == '__main__':
-	# B = walking_bass(['Bb','Eb7',['Bb','F7'],'Bb7','Eb7','Eb07',['Bb','F7'],'Bb','F7','F7','Bb','Bb'],'Blue Monk') # Blue Monk - Thelonious Monk
-	# B = walking_bass(['C','Bb'],'Tester')
 	B = walking_bass([
 		['Bb7','G7'],['Cm7','F7'],['Dm7','G7'],['Cm7','F7'],
 		['Fm7','Bb7'],['Eb7','Ab7'], ['Dm7','G7'],['Cm7','F7'],
@@ -159,4 +157,7 @@ if __name__ == '__main__':
 		'C7','R','F7','R',
 		['Bb7','G7'],['Cm7','F7'],['Dm7','G7'],['Cm7','F7'],
 		['Fm7','Bb7'],['Eb7','Ab7'],['Cm7','F7'],'Bb6'
-		],'Oleo', 'greato')
+		],'Oleo')
+
+	# B = walking_bass(['Bb','Eb7',['Bb','F7'],'Bb7','Eb7','Eb07',['Bb','F7'],'Bb','F7','F7','Bb','Bb'],'Blue Monk') # Blue Monk - Thelonious Monk
+	# B = walking_bass(['C','Bb'],'Tester')
