@@ -6,7 +6,7 @@ Jazz basslines are simple enough to generate as they outline the chords without 
 	1. looks up chordal tones
 	```
 	def _realbook(self, score, depth = 0): 
-		'''recusive function, looks up tones like fake books'''
+		'''recursive function, looks up tones like fake books'''
 	```
 	2. sorts notes by proximity to the rootnote of the next chord
 	```

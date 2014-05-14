@@ -51,7 +51,7 @@ class walking_bass():
 		self.to_png()
 
 	def _realbook(self, score, depth = 0): 
-		'''recusive function, looks up tones like fake books'''
+		'''recursive function, looks up tones like fake books'''
 		bassline = []
 		for chord in score:
 			if type(chord) is list:
