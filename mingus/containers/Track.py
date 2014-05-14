@@ -61,7 +61,7 @@ An !InstrumentRangeError exception will be raised if an \
 but the note turns out not to be within the range of the \
 [refMingusContainersInstrument Instrument]."""
 
-		if self.instrument != None:
+		if self.instrument != None and note != None:
 			if not(self.instrument.can_play_notes(note)):
 				raise InstrumentRangeError,\
 					"Note '%s' is not in range of the instrument (%s)"\

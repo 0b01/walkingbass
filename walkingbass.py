@@ -57,7 +57,10 @@ class walking_bass():
 			if type(chord) is list:
 				bassline.append(self._realbook(chord,depth+1))
 			else:
-				notes = chords.from_shorthand(chord)
+				if chord in ['R','r']:
+					notes = ['r','r','r','r']
+				else:
+					notes = chords.from_shorthand(chord)
 				rest = notes[1:]
 				shuffle(rest)
 				notes = [notes[0]] + rest
@@ -70,6 +73,7 @@ class walking_bass():
 		''' sort notes by proximity to the next chord'''
 		bassline = []
 		for (i, notes) in enumerate(self.chordsd):
+			
 			chordname = notes[0]
 			rootnote = notes[1][0]
 			notes = notes[1][1:]
@@ -77,6 +81,8 @@ class walking_bass():
 				next_chord = self.chordsd[i+1][1][0]
 			except IndexError:
 				pass
+			if 'r' in notes or next_chord in ['r','R']:
+				continue
 			notes = sorted(notes, key=lambda n: abs(intervals.measure(n,next_chord)-5)) # out of 10 notes
 			final = [rootnote] + notes
 			bassline.append( final )
@@ -113,11 +119,13 @@ class walking_bass():
 	def _create_track(self):
 		tp = Track(self.i)
 		b = Bar( (4,4) )
-		count = 0
-		for chord in self.chordsd:
-			for i in chord[1]:
-				tp + (i+'-'+self.octave[count])
-				count += 1
+		for (i, chord) in enumerate( self.chordsd):
+			for c in chord[1]:
+				if c == 'r':
+					tp.add_notes(None,4)
+					continue
+				tp + (c+'-'+self.octave[i])
+
 		return tp
 	def to_png(self):
 		c = Composition()
@@ -140,6 +148,15 @@ class walking_bass():
 
 
 if __name__ == '__main__':
-	B = walking_bass(['Bb','Eb7',['Bb','F7'],'Bb7','Eb7','Eb07',['Bb','F7'],'Bb','F7','F7','Bb','Bb'],'Blue Monk') # Blue Monk - Thelonious Monk
-	B = walking_bass(['C','Bb'],'Tester')
-	
+	# B = walking_bass(['Bb','Eb7',['Bb','F7'],'Bb7','Eb7','Eb07',['Bb','F7'],'Bb','F7','F7','Bb','Bb'],'Blue Monk') # Blue Monk - Thelonious Monk
+	# B = walking_bass(['C','Bb'],'Tester')
+	B = walking_bass([
+		['Bb7','G7'],['Cm7','F7'],['Dm7','G7'],['Cm7','F7'],
+		['Fm7','Bb7'],['Eb7','Ab7'], ['Dm7','G7'],['Cm7','F7'],
+		['Bb7','G7'],['Cm7','F7'],['Dm7','G7'],['Cm7','F7'],
+		['Fm7','Bb7'],['Eb7','Ab7'],['Cm7','F7'],'Bb6',
+		'D7','R','G7','R',
+		'C7','R','F7','R',
+		['Bb7','G7'],['Cm7','F7'],['Dm7','G7'],['Cm7','F7'],
+		['Fm7','Bb7'],['Eb7','Ab7'],['Cm7','F7'],'Bb6'
+		],'Oleo', 'greato')
