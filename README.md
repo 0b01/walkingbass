@@ -1,6 +1,6 @@
 walkingbass
 =============
-Jazz basslines are simple enough to be generated as they outline the chords without much variation.
+Jazz basslines are simple enough to generate as they outline the chords without much variation.
 ![Oleo](https://raw.githubusercontent.com/greato/walkingbass/master/Oleo.png)
 ##Algorithm
 	1. looks up chordal tones
