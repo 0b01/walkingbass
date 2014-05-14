@@ -99,7 +99,7 @@ class walking_bass():
 				m.append(j)
 		i = m[0]
 		if i in ['E','F','F#','Gb','G']:
-			ret = choice(['1','2','3'])
+			ret = choice(['2','3','4'])
 		else:
 			ret = choice(['2','3'])
 		octave.append(ret)
