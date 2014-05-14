@@ -45,7 +45,7 @@ class walking_bass():
 		self.bassline = self._realbook(self.chords)
 		self.bassline = self._prox_interval()
 
-		self._bell_and_whistles()
+		self._bells_and_whistles()
 		self.track = self._create_track()
 		self.track.add_chords(self.chords)
 		self.to_png()
@@ -84,7 +84,7 @@ class walking_bass():
 		self.bassline = bassline
 		return bassline
 	
-	def _bell_and_whistles(self):
+	def _bells_and_whistles(self):
 		'''This function styles up the bassline, now it can only change octave'''
 		m = []
 		octave = []
