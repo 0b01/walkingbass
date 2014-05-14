@@ -31,6 +31,13 @@ Jazz basslines are simple enough to be generated as they outline the chords with
 ```
 Or you can dive in the code and tweak the settings
 
+##Code Example
+```
+import walkingbass
+B = walking_bass(['Bb','Eb7',['Bb','F7'],'Bb7','Eb7','Eb07',['Bb','F7'],'Bb','F7','F7','Bb','Bb'], 'Blue Monk') # Blue Monk - Thelonious Monk
+print B.bassline
+```
+
 ##Note
 I modified the music lib mingus for bass. I added function major_bar and minor_bar and hardcoded bass intervals and output formats.
 Its implementation of LilyPond is incomplete so I added a bunch of lines for the bass.
