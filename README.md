@@ -1,17 +1,45 @@
-pyWalkingBass
+walkingbass
 =============
+Jazz basslines are simple enough to be generated as they outline the chords without much variation.
+##Algorithm
+	1. looks up chordal tones
+	```
+	def _realbook(self, score, depth = 0): 
+		'''recusive function, looks up tones like fake books'''
+	```
+	2. sorts notes by proximity to the rootnote of the next chord
+	```
+	def _prox_interval(self): 
+		''' sort notes by proximity to the next chord'''
+	```
+	3. adds bells and whistles when appropriate
+	```
+	def _bell_and_whistles(self):
+		'''This function styles up the bassline, now it can only change octave'''
+	```
+	4. outputs to .png .pdf or whatever
+	```
+	def _create_track(self):
+	def to_png(self):
+	```
+	
+##Usage
+```
+	>>> B = walking_bass(['Bb','Eb7',['Bb','F7'],'Bb7','Eb7','Eb07',['Bb','F7'],'Bb','F7','F7','Bb','Bb'], 'Blue Monk') # Blue Monk - Thelonious Monk
+	>>> ^D
+	~$ # *opens generated .png file*
+```
+Or you can dive in the code and tweak the settings
 
-PyWalkingBass generates jazz/swing style walking bass based on chords
+##Note
+I modified the music lib mingus for bass. I added function major_bar and minor_bar and hardcoded bass intervals and output formats.
+Its implementation of LilyPond is incomplete so I added a bunch of lines for the bass.
+`mingus` is a handy library, not as good as whom it named after.
 
-I modified mingus to suit my needs such as adding bass clef. It uses LilyPond to output the sheet music.
-
-----
-Generates basslines from chords procedurally because bass outlines the chordal tone fancy free
-	1. lookup chordal tones
-	2. sort notes by proximity to the rootnote of the next chord
-	3. add bells and whistles when appropriate
-	4. add notes patterns for long ones (Longest Substring Algorithm)
-##Usage: 
-	>>> B = walking_bass(['Bb','Eb7',['Bb','F7'],'Bb7','Eb7','Eb07',['Bb','F7'],'Bb','F7','F7','Bb','Bb'])
-	>>> B.prox_interval()
-	>>> print B.bassline
+##TODO
+* ~~controlled randomness ~~
+* patterns in memory (with longest common substring)
+* scales
+* web
+* styles
+* triplets
