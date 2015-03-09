@@ -17,6 +17,7 @@ from random import choice
 from itertools import repeat, chain
 
 from compiler.ast import flatten
+from collections import deque
 
 _note_dict = { 
     'C' : 0,
@@ -59,6 +60,22 @@ _note_sub = {
     'Bbb': 'A',
     'R':'R',
 }
+def longest_duplicate_substring(string):
+    l = list(string)
+    d = deque(string[1:])
+    match = []
+    longest_match = []
+    while d:
+        for i, item in enumerate(d):
+            if l[i]==item:
+                match.append(item)
+            else:
+                if len(longest_match) < len(match):
+                    longest_match = match
+                match = []
+        d.popleft()
+    return longest_match
+
 def interval(notes):
     note1, note2 = notes
     n1,oct1 = note1
@@ -103,6 +120,9 @@ class walking_bass():
 
         self.bassline = self._realbook(self.chords)
         self.bassline = flatten(self.bassline)
+        longest_common = longest_duplicate_substring(self.bassline)
+        print longest_common #TODO:IMPLETMENT THIS
+        return
         self._naive()
         self._flow()
 
