@@ -51,5 +51,9 @@ coverage.xml
 
 # Sphinx documentation
 docs/_build/
-
+*.sf2
+*.mid
+*.mp3
 *.pdf
+
+python-mode/
